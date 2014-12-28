@@ -1,0 +1,25 @@
+// Digital Out put
+
+GPIONO = gpio no    ex) 66
+VALUE = 0 or 1
+
+echo $(GPIONO) > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio$(GPIONO)/direction
+
+echo $(VALUE) > /sys/class/gpio/gpio$(GPIONO)/value
+
+
+
+// PWM
+
+PIN = Head_pin      ex) P8_13
+VALUE = 0 or 1
+REPIOD = period     ex) 10000000 -> 1k (ns)
+DUTY = duty         ex) 5000000 -> 0.5k (ns)
+
+echo am33xx_pwm > /sys/devices/bone_capemgr.9/slots
+echo bone_pwm_$(PIN) > /sys/devices/bone_capemgr.9/slots
+
+echo $(PERIOD) > period
+echo $(DUTY) > duty
+echo $(VALUE) > run
