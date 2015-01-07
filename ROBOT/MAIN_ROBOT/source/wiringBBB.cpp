@@ -1,4 +1,4 @@
-#include "../include/wiringBBB.h"
+#include "../include/wiringBBB.hpp"
 
 
 /*----- pinMode() -----*/
@@ -21,7 +21,7 @@ void pinMode(int pin, DIRECTION direction) {
 
     // OUTPUT
     if (direction == OUTPUT) {
-        fputs("out", fp_pinvalue);
+        fputs("out", fp_pindirection);
     }
 
     fclose(fp_pindirection);
@@ -41,6 +41,7 @@ void digitalWrite(int pin, STATE state) {
     if (state == LOW) {
         fputs("0", fp_value);
     }
+    // HIGH
     else if (state == HIGH) {
         fputs("1", fp_value);
     }

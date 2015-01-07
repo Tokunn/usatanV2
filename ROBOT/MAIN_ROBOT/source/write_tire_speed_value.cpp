@@ -5,15 +5,13 @@
 
 /*----- initialize() -----*/
 TireSpeedvalueGPIO::TireSpeedvalueGPIO() {
-    if (wiringPiSetup() != -1) {
-        pinMode(LEFT_NORMAL_ROTATION, OUTPUT);
-        pinMode(LEFT_REVERS_ROTATION, OUTPUT);
-        pinMode(LEFT_SPEED,           OUTPUT);
+    pinMode(LEFT_NORMAL_ROTATION, OUTPUT);
+    pinMode(LEFT_REVERS_ROTATION, OUTPUT);
+    pinMode(LEFT_SPEED,           OUTPUT);
 
-        pinMode(RIGT_NORMAL_ROTATION, OUTPUT);
-        pinMode(RIGT_REVERS_ROTATION, OUTPUT);
-        pinMode(RIGT_SPEED,           OUTPUT);
-    }
+    pinMode(RIGT_NORMAL_ROTATION, OUTPUT);
+    pinMode(RIGT_REVERS_ROTATION, OUTPUT);
+    pinMode(RIGT_SPEED,           OUTPUT);
 }
 
 
@@ -35,48 +33,48 @@ void TireSpeedvalueGPIO::comv_speed_i2a(char* p_speed_char, int* p_speed) {
 void TireSpeedvalueGPIO::write_gpio(char* p_speed_char) {
     // LEFT Direction
     if (p_speed_char[0] == '0') {
-        digitalWrite(LEFT_NORMAL_ROTATION, 1);
-        digitalWrite(LEFT_REVERS_ROTATION, 0);
+        digitalWrite(LEFT_NORMAL_ROTATION, HIGH);
+        digitalWrite(LEFT_REVERS_ROTATION, LOW);
     }
     else {
-        digitalWrite(LEFT_NORMAL_ROTATION, 0);
-        digitalWrite(LEFT_REVERS_ROTATION, 1);
+        digitalWrite(LEFT_NORMAL_ROTATION, LOW);
+        digitalWrite(LEFT_REVERS_ROTATION, HIGH);
     }
 
     // LEFT Speed
     if (p_speed_char[2] == '0') {
-        digitalWrite(LEFT_SPEED, 0);
+        digitalWrite(LEFT_SPEED, LOW);
     }
     else {
-        digitalWrite(LEFT_SPEED, 1);
+        digitalWrite(LEFT_SPEED, HIGH);
     }
 
     // RIGT Direction
     if (p_speed_char[3] == '0') {
-        digitalWrite(RIGT_NORMAL_ROTATION, 1);
-        digitalWrite(RIGT_REVERS_ROTATION, 0);
+        digitalWrite(RIGT_NORMAL_ROTATION, HIGH);
+        digitalWrite(RIGT_REVERS_ROTATION, LOW);
     }
     else {
-        digitalWrite(RIGT_NORMAL_ROTATION, 0);
-        digitalWrite(RIGT_REVERS_ROTATION, 1);
+        digitalWrite(RIGT_NORMAL_ROTATION, LOW);
+        digitalWrite(RIGT_REVERS_ROTATION, HIGH);
     }
 
     // RIGT Speed
     if (p_speed_char[5] == '0') {
-        digitalWrite(RIGT_SPEED, 0);
+        digitalWrite(RIGT_SPEED, LOW);
     }
     else {
-        digitalWrite(RIGT_SPEED, 1);
+        digitalWrite(RIGT_SPEED, HIGH);
     }
 
     // Brake
     if (p_speed_char[2] == '0' && p_speed_char[5]) {
-        digitalWrite(LEFT_NORMAL_ROTATION, 1);
-        digitalWrite(LEFT_REVERS_ROTATION, 1);
-        digitalWrite(LEFT_SPEED,           1);
+        digitalWrite(LEFT_NORMAL_ROTATION, HIGH);
+        digitalWrite(LEFT_REVERS_ROTATION, HIGH);
+        digitalWrite(LEFT_SPEED,           HIGH);
 
-        digitalWrite(RIGT_NORMAL_ROTATION, 1);
-        digitalWrite(RIGT_REVERS_ROTATION, 1);
-        digitalWrite(RIGT_SPEED,           1);
+        digitalWrite(RIGT_NORMAL_ROTATION, HIGH);
+        digitalWrite(RIGT_REVERS_ROTATION, HIGH);
+        digitalWrite(RIGT_SPEED,           HIGH);
     }
 }

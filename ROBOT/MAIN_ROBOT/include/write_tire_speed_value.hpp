@@ -2,7 +2,7 @@
 #define HEAD_WRITE_TIRE_SPEED_VALUE
 
 // GPIO
-#include "wiringBBB.h"
+#include "wiringBBB.hpp"
 #include <stdio.h>
 
 
