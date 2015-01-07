@@ -7,6 +7,7 @@ void pinMode(int pin, DIRECTION direction) {
     FILE *fp_pindirection;
 
     char pin_char[5];
+    char out_char[] = "out";
     char export_path[] = "/sys/class/gpio/export";
 
     char direction_path[40];
@@ -16,12 +17,12 @@ void pinMode(int pin, DIRECTION direction) {
     fputs(pin_char, fp_export);
     fclose(fp_export);
 
-    sprintf(direction_path, "/sys/class/gpio%d/direction", pin);
+    sprintf(direction_path, "/sys/class/gpio/gpio%d/direction", pin);
     fp_pindirection = fopen(direction_path, "w");
 
     // OUTPUT
     if (direction == OUTPUT) {
-        fputs("out", fp_pindirection);
+        fputs(out_char, fp_pindirection);
     }
 
     fclose(fp_pindirection);
