@@ -1,3 +1,6 @@
+#ifndef HEAD_GPIO_CONFIG
+#define HEAD_GPIO_CONFIG
+
 // LEFT Normal rotation
 #define LEFT_NORMAL_ROTATION 45     // P8_11
 
@@ -16,3 +19,5 @@
 
 // RIGHT Speed
 #define RIGT_SPEED           3      // P9_21
+
+#endif // HEAD_GPIO_CONFIG

@@ -1,7 +1,5 @@
 #include "../include/write_tire_speed_value.hpp"
 
-#include <stdio.h>
-
 
 /*----- initialize() -----*/
 TireSpeedvalueGPIO::TireSpeedvalueGPIO() {
