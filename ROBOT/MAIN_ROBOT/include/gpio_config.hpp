@@ -20,4 +20,8 @@
 // RIGHT Speed
 #define RIGT_SPEED           3      // P9_21
 
+
+// Limit Switch
+#define LIMIT_SWITCH         66     // P8_07
+
 #endif // HEAD_GPIO_CONFIG

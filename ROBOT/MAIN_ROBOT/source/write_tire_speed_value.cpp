@@ -1,15 +1,19 @@
 #include "../include/write_tire_speed_value.hpp"
 
+#define DUTY_TIME 750000
+
 
 /*----- initialize() -----*/
 TireSpeedvalueGPIO::TireSpeedvalueGPIO() {
     pinMode(LEFT_NORMAL_ROTATION, OUTPUT);
     pinMode(LEFT_REVERS_ROTATION, OUTPUT);
-    pinMode(LEFT_SPEED,           OUTPUT);
+    //pinMode(LEFT_SPEED,           OUTPUT);
+    pinMode(LEFT_SPEED,           AOUTPUT);
 
     pinMode(RIGT_NORMAL_ROTATION, OUTPUT);
     pinMode(RIGT_REVERS_ROTATION, OUTPUT);
-    pinMode(RIGT_SPEED,           OUTPUT);
+    //pinMode(RIGT_SPEED,           OUTPUT);
+    pinMode(RIGT_SPEED,           AOUTPUT);
 }
 
 
@@ -41,10 +45,10 @@ void TireSpeedvalueGPIO::write_gpio(char* p_speed_char) {
 
     // LEFT Speed
     if (p_speed_char[2] == '0') {
-        digitalWrite(LEFT_SPEED, LOW);
+        analogWrite(LEFT_SPEED, 1000000);
     }
     else {
-        digitalWrite(LEFT_SPEED, HIGH);
+        analogWrite(LEFT_SPEED, DUTY_TIME);
     }
 
     // RIGT Direction
@@ -59,20 +63,20 @@ void TireSpeedvalueGPIO::write_gpio(char* p_speed_char) {
 
     // RIGT Speed
     if (p_speed_char[5] == '0') {
-        digitalWrite(RIGT_SPEED, LOW);
+        analogWrite(RIGT_SPEED, 1000000);
     }
     else {
-        digitalWrite(RIGT_SPEED, HIGH);
+        analogWrite(RIGT_SPEED, DUTY_TIME);
     }
 
     // Brake
-    if (p_speed_char[2] == '0' && p_speed_char[5]) {
-        digitalWrite(LEFT_NORMAL_ROTATION, HIGH);
-        digitalWrite(LEFT_REVERS_ROTATION, HIGH);
-        digitalWrite(LEFT_SPEED,           HIGH);
+    if (p_speed_char[2] == '0' && p_speed_char[5] == '0') {
+        digitalWrite(LEFT_NORMAL_ROTATION, LOW);
+        digitalWrite(LEFT_REVERS_ROTATION, LOW);
+        analogWrite(LEFT_SPEED,           1000000);
 
-        digitalWrite(RIGT_NORMAL_ROTATION, HIGH);
-        digitalWrite(RIGT_REVERS_ROTATION, HIGH);
-        digitalWrite(RIGT_SPEED,           HIGH);
+        digitalWrite(RIGT_NORMAL_ROTATION, LOW);
+        digitalWrite(RIGT_REVERS_ROTATION, LOW);
+        analogWrite(RIGT_SPEED,           1000000);
     }
 }

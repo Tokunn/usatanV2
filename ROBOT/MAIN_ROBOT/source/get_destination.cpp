@@ -15,7 +15,7 @@ Destination::Destination() {
                                        "$BRUNA_"  };
     //                         {M, O, K, N, K, B};
     int temp_pose_position[] = {1, 2, 3, 4, 5, 6};
-    all_count = 8; // TODO count check
+    all_count = 6; // TODO count check
     fd = open(XBEE_SERIAL_PORT, O_RDWR);
 
     unsigned int size = sizeof(temp_pose_string) / sizeof(int);

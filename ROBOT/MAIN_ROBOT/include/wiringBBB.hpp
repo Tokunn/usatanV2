@@ -7,8 +7,10 @@
 #include <iostream>
 
 typedef enum{
+    INPUT,
     OUTPUT,
-    AINPUT
+    AINPUT,
+    AOUTPUT
 }DIRECTION;
 
 typedef enum{
@@ -17,7 +19,10 @@ typedef enum{
 }STATE;
 
 void pinMode(int pin, DIRECTION direction);
+
+int digitalRead(int pin);
 void digitalWrite(int pin, STATE state);
 int analogRead(int pin);
+void analogWrite(int pin, int value);
 
 #endif // HEAD_WIRINGBBB

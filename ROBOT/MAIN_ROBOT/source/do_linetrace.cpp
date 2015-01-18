@@ -8,8 +8,8 @@ LineTrace::LineTrace() {
 
     /* command init */
     for (int i = 0; i <= 0x3F; i++) {
-        command[i][0] = 0;
-        command[i][1] = 0;
+        command[i][0] = 1;
+        command[i][1] = 1;
     }
 
     // Out of line
@@ -17,40 +17,46 @@ LineTrace::LineTrace() {
     command[0x00][1] = 0;
 
     // Line in right side
-    command[0x01][0] = 1;
-    command[0x01][1] = 0;
+    command[0x01][0] = 0;
+    command[0x01][1] = 1;
 
-    command[0x03][0] = 1;
-    command[0x03][1] = 0;
+    command[0x03][0] = 0;
+    command[0x03][1] = 1;
 
-    command[0x02][0] = 1;
-    command[0x02][1] = 0;
+    command[0x02][0] = 0;
+    command[0x02][1] = 1;
 
-    command[0x06][0] = 1;
-    command[0x06][1] = 0;
+    command[0x06][0] = 0;
+    command[0x06][1] = 1;
 
     // Line in front
-    command[0x04][0] = 1;
-    command[0x04][1] = 1;
-
     command[0x0C][0] = 1;
     command[0x0C][1] = 1;
 
     command[0x08][0] = 1;
     command[0x08][1] = 1;
 
+    command[0x04][0] = 1;
+    command[0x04][1] = 1;
+
+    command[0x1C][0] = 1;
+    command[0x1C][1] = 1;
+
+    command[0x0E][0] = 1;
+    command[0x0E][1] = 1;
+
     // Line in left side
-    command[0x18][0] = 0;
-    command[0x18][1] = 1;
+    command[0x18][0] = 1;
+    command[0x18][1] = 0;
 
-    command[0x10][0] = 0;
-    command[0x10][1] = 1;
+    command[0x10][0] = 1;
+    command[0x10][1] = 0;
 
-    command[0x30][0] = 0;
-    command[0x30][1] = 1;
+    command[0x30][0] = 1;
+    command[0x30][1] = 0;
 
-    command[0x20][0] = 0;
-    command[0x20][1] = 1;
+    command[0x20][0] = 1;
+    command[0x20][1] = 0;
 
     // Destination positions
     command[0x3F][0] = 1;
