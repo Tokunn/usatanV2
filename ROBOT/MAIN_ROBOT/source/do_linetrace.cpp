@@ -29,6 +29,9 @@ LineTrace::LineTrace() {
     command[0x06][0] = 0;
     command[0x06][1] = 1;
 
+    command[0x0E][0] = 0;
+    command[0x0E][1] = 1;
+
     // Line in front
     command[0x0C][0] = 1;
     command[0x0C][1] = 1;
@@ -38,12 +41,6 @@ LineTrace::LineTrace() {
 
     command[0x04][0] = 1;
     command[0x04][1] = 1;
-
-    command[0x1C][0] = 1;
-    command[0x1C][1] = 1;
-
-    command[0x0E][0] = 1;
-    command[0x0E][1] = 1;
 
     // Line in left side
     command[0x18][0] = 1;
@@ -57,6 +54,9 @@ LineTrace::LineTrace() {
 
     command[0x20][0] = 1;
     command[0x20][1] = 0;
+
+    command[0x1C][0] = 1;
+    command[0x1C][1] = 0;
 
     // Destination positions
     command[0x3F][0] = 1;

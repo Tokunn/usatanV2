@@ -4,8 +4,10 @@
 /*----- initialize() -----*/
 SensorValue::SensorValue() {
     pinMode((int)NULL, AINPUT);
-    //int threshold[] = { 1654, 1490, 1595, 1580, 1607, 1558 };
-    int threshold[] = { 1714, 1470, 1696, 1672, 1666, 1634 };
+    //int threshold[] = { 1714, 1470, 1696, 1672, 1666, 1634 };
+    //int threshold[] = { 1644, 1378, 1576, 1594, 1591, 1549 };
+    //int threshold[] = { 1644, 1378, 1600, 1594, 1591, 1549 };
+    int threshold[] = { 1648, 1427, 1598, 1615, 1588, 1554 };
     for (int i = 0; i < 6; i++) {
         sensor_threshold[i] = threshold[i];
     }

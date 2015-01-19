@@ -30,19 +30,23 @@ int main()
 
     while (true) {      // 1 Round
         printf("Waiting...\n");
-        //bool onlineflag = false;
+        bool onlineflag = false;
         bool kokodayoflag = false;
         int count = 0;
         int stopline = destination.get_position();
+        //int stopline = 3;   // #=# DEUBG #=#
         int all_count = destination.get_all_count();
         int stop_val = 0x00;
+        int on_val = 0x3F;
 
         printf("Stop Line: %d\n", stopline);
         talk_usatan(-1);
+        usleep(10000000);
+        talk_usatan(-1);
 
         while (true) {      // Small Loop
-            struct timeval t0;      // Roop Start
-            gettimeofday(&t0, NULL);
+            /*struct timeval t0;      // Roop Start
+            gettimeofday(&t0, NULL);*/
 
             int val = sensor.get_sensor_value();
             command_lib.set_sensor_value(&val);
@@ -61,9 +65,10 @@ int main()
 
             if (val == 0x3F) {      // Count UP
                 count++;
+                talk_usatan(count);
             }
 
-            if ((val == 0x3F) && (count == stopline)) {     // STOP LINE
+            if ((val == 0x3F) && (count == stopline) && (onlineflag == false)) {   // STOP LINE
                 command_lib.set_sensor_value(&stop_val);
                 command = command_lib.get_tire_speed_value();
                 motor.write_speed(command);
@@ -79,12 +84,25 @@ int main()
                     value = digitalRead(LIMIT_SWITCH);
                 } while (value == HIGH);
                 printf("End\n");
+                onlineflag = true;
+                talk_usatan(-3);
                 usleep(1000000);
+                // RUN
+                command_lib.set_sensor_value(&on_val);
+                command = command_lib.get_tire_speed_value();
+                motor.write_speed(command);
+                usleep(600000);
             }
             else if (count == all_count) {      // HOME LINE
                 command_lib.set_sensor_value(&stop_val);
+                command = command_lib.get_tire_speed_value();
+                motor.write_speed(command);
+
                 printf("[!!]STOP HOME\n");
                 break;
+            }
+            else if (val != 0x3F) {
+                onlineflag = false;
             }
 
             //int command = command_lib.get_tire_speed_value();
@@ -96,15 +114,16 @@ int main()
             motor.write_speed(command);
 
             if (val == 0x3F) {
-                usleep(300000);
+                usleep(600000); //300000
             }
 
-            struct timeval t1;      // Roop End
+            /*struct timeval t1;      // Roop End
             gettimeofday(&t1, NULL);
             int delay_time = WAIT_LOOP_TIME - (t1.tv_usec - t0.tv_usec);
             if (delay_time > 0) {
                 usleep(delay_time);
-            }
+            }*/
+            usleep(100);
         }
 
     }
