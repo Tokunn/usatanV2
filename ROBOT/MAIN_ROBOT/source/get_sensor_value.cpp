@@ -37,10 +37,16 @@ void SensorValue::recive_serial(int* p_sensor_value) {
 int SensorValue::comv_sensor_value(const int* p_sensor_value) {
     int sensor_value = 0;
     for (int i = 0; i < 6; i++) {
-        if (p_sensor_value[i] > sensor_threshold[i]) {
+        /*if (p_sensor_value[i] > sensor_threshold[i]) {
             sensor_value = (sensor_value<<1) + 0;
         }
         else if (p_sensor_value[i] <= sensor_threshold[i]) {
+            sensor_value = (sensor_value<<1) + 1;
+        }*/
+        if (p_sensor_value[i] < sensor_threshold[i]) {
+            sensor_value = (sensor_value<<1) + 0;
+        }
+        else if (p_sensor_value[i] >= sensor_threshold[i]) {
             sensor_value = (sensor_value<<1) + 1;
         }
     }
