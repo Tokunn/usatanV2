@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <iostream>
 
-#define QUIET_CMD "killall mpg321"  // Stop voice command
+#define QUIET_CMD "killall mpg123"  // Stop voice command
 #define VOICE_CMD "mpg321 /usr/share/voices/voice%d.mp3 &"    // file path
 #define CMD_LEN   50
 
