@@ -1,0 +1,10 @@
+[Unit]
+Description=Beagle Bone Usatan Configuration
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/bin/start_conf.py
+
+[Install]
+WantedBy=multi-user.target
