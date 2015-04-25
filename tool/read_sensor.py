@@ -30,24 +30,25 @@ def analogRead(pin):
 #----- main() -----#
 def main():
     PinMode_AIN()
-    # Sample 1
-    value1 = [0, 0, 0, 0, 0, 0]
-    input('Enter1 >')     # wait
-    for i in range(6):
-        value1[i] = analogRead(i)
-    print(value1)
-    # Sample 2
-    value2 = [0, 0, 0, 0, 0, 0]
-    input('Enter2 >')     # wait
-    for i in range(6):
-        value2[i] = analogRead(i)
-    print(value2)
-    # Threshould
-    threshould = [0, 0, 0, 0, 0, 0]
-    for i in range(6):
-        threshould[i] = (value1[i] + value2[i]) / 2
-    print("Threshould")
-    print(threshould)
+    while(True):
+        # Sample 1
+        value1 = [0, 0, 0, 0, 0, 0]
+        input('Enter1 >')     # wait
+        for i in range(6):
+            value1[i] = analogRead(i)
+        print(value1)
+        # Sample 2
+        value2 = [0, 0, 0, 0, 0, 0]
+        input('Enter2 >')     # wait
+        for i in range(6):
+            value2[i] = analogRead(i)
+        print(value2)
+        # Threshould
+        threshould = [0, 0, 0, 0, 0, 0]
+        for i in range(6):
+            threshould[i] = (value1[i] + value2[i]) / 2
+        print("Threshould")
+        print(threshould)
 
 
 if __name__ == '__main__':

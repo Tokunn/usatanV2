@@ -23,6 +23,11 @@ def main():
     cmd = "ip addr add 192.168.7.2/24 dev usb0"
     call_system(cmd)
 
+    # MAIN_ROBOT
+    while(True):
+        cmd = "MAIN_ROBOT"
+        call_system(cmd)
+
 if __name__ == '__main__':
     try:
         main()

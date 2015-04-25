@@ -8,7 +8,8 @@
 #include <iostream>
 
 #define QUIET_CMD "killall mpg123"  // Stop voice command
-#define VOICE_CMD "mpg321 /usr/share/voices/voice%d.mp3 &"    // file path
+//#define VOICE_CMD "mpg123 /usr/share/voices/voice%d.mp3 &"    // file path
+#define VOICE_CMD "ls"
 #define CMD_LEN   50
 
 
