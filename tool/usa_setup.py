@@ -51,7 +51,10 @@ def settingPcm():
 
 #----- settingConf() -----#
 def settingConf():
-    os.mkdir(SCRIPTS)
+    try:
+        os.mkdir(SCRIPTS)
+    except FileExistsError:
+        pass
     shutil.copy(CONFPY, SCRIPTS)
     shutil.copy(CONFSV, SYSTEMD)
     cmd = "systemctl enable start_conf.service"
@@ -70,6 +73,4 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         print("\nCtrl+C -> END")
-    except FileExistsError:
-        pass
 
