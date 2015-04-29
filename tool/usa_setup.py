@@ -15,7 +15,7 @@ defautls.pcm.card 1
 defautls.pcm.device 0
 defautls.ctl.card 1
 """
-CONFFILE = os.path.dirname(SCRIPTDIR)
+CONFFILE = os.path.join(os.path.dirname(SCRIPTDIR), 'ROBOT', 'MAIN_ROBOT', 'start_scripts')
 print(CONFFILE)
 
 #----- call_system() -----#
