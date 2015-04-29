@@ -36,8 +36,8 @@ clean:
 
 upload: $(BIN_DIR) $(TARGET)
 	#ssh-keygen -R 172.16.12.131
-	#scp $(TARGET) root@192.168.7.2:/usr/bin/
-	scp $(TARGET) root@192.168.10.2:/usr/bin/
+	scp $(TARGET) root@192.168.7.2:/usr/bin/
+	#scp $(TARGET) root@192.168.10.2:/usr/bin/
 
 
 -include $(DEPENDS)
