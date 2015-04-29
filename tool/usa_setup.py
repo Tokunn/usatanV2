@@ -16,7 +16,8 @@ defautls.pcm.device 0
 defautls.ctl.card 1
 """
 CONFFILE = os.path.join(os.path.dirname(SCRIPTDIR), 'ROBOT', 'MAIN_ROBOT', 'start_scripts')
-print(CONFFILE)
+CONFPY = os.path.join(CONFFILE, 'start_conf.py')
+CONFSH = os.path.join(CONFFILE, 'start_conf.sh')
 
 #----- call_system() -----#
 def call_system(cmd):
@@ -45,10 +46,18 @@ def settingPcm():
     open(ASOUNDFILE, "w").write(asound)
 
 
+#----- settingConf() -----#
+def settingConf():
+    print(CONFFILE)
+    print(CONFPY)
+    print(CONFSH)
+
+
 #----- main() -----#
 def main():
     installPkg()
     settingPcm()
+    settingConf()
 
 
 if __name__ == '__main__':
