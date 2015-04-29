@@ -51,6 +51,7 @@ def settingPcm():
 
 #----- settingConf() -----#
 def settingConf():
+    os.mkdir(SCRIPTS)
     shutil.copy(CONFPY, SCRIPTS)
     shutil.copy(CONFSV, SYSTEMD)
     cmd = "systemctl enable start_conf.service"
