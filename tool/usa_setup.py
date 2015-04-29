@@ -41,7 +41,7 @@ def installPkg():
 #----- settingPcm() -----#
 def settingPcm():
     print(ASOUNDFILE)
-    open(ASOUNDFILE).write(asound)
+    open(ASOUNDFILE, "w").write(asound)
 
 
 #----- main() -----#
