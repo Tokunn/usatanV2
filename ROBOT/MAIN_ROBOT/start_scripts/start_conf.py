@@ -25,7 +25,7 @@ def main():
 
     # MAIN_ROBOT
     while(True):
-        cmd = "MAIN_ROBOT"
+        cmd = "/usr/bin/MAIN_ROBOT"
         call_system(cmd)
 
 if __name__ == '__main__':
