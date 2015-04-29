@@ -15,6 +15,8 @@ defautls.pcm.card 1
 defautls.pcm.device 0
 defautls.ctl.card 1
 """
+CONFFILE = os.path.dirname(SCRIPTDIR)
+print(CONFFILE)
 
 #----- call_system() -----#
 def call_system(cmd):
