@@ -5,6 +5,7 @@
 
 import os, sys
 import subprocess
+import shutil
 
 SCRIPTDIR = os.path.dirname(os.path.abspath(__file__))
 HOMEDIR = os.environ['HOME']
@@ -17,7 +18,9 @@ defautls.ctl.card 1
 """
 CONFFILE = os.path.join(os.path.dirname(SCRIPTDIR), 'ROBOT', 'MAIN_ROBOT', 'start_scripts')
 CONFPY = os.path.join(CONFFILE, 'start_conf.py')
-CONFSH = os.path.join(CONFFILE, 'start_conf.sh')
+CONFSV = os.path.join(CONFFILE, 'start_conf.service')
+SYSTEMD = os.path.join('/etc', 'systemd', 'system')
+SCRIPTS = os.path.join('/opt', 'bin')
 
 #----- call_system() -----#
 def call_system(cmd):
@@ -48,9 +51,10 @@ def settingPcm():
 
 #----- settingConf() -----#
 def settingConf():
-    print(CONFFILE)
-    print(CONFPY)
-    print(CONFSH)
+    shutil.copy(CONFPY, SCRIPTS)
+    shutil.copy(CONFSV, SYSTEMD)
+    cmd = "systemctl enable start_conf.service"
+    call_system(cmd)
 
 
 #----- main() -----#
