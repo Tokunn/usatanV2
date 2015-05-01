@@ -12,9 +12,10 @@ HOMEDIR = os.environ['HOME']
 PKGFILE = os.path.join(SCRIPTDIR, 'pkglist')
 ASOUNDFILE = os.path.join('/etc', 'asound.conf')
 asound = """
-defautls.pcm.card 1
-defautls.pcm.device 0
-defautls.ctl.card 1
+pcm.!default {
+    type hw
+    card 1
+}
 """
 CONFFILE = os.path.join(os.path.dirname(SCRIPTDIR), 'ROBOT', 'MAIN_ROBOT', 'start_scripts')
 CONFPY = os.path.join(CONFFILE, 'start_conf.py')
