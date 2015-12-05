@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 #include "../include/get_destination.hpp"
+#include "../include/get_frontsensor_value.hpp"
 #include "../include/get_sensor_value.hpp"
 #include "../include/do_linetrace.hpp"
 #include "../include/write_tire_speed_value.hpp"
@@ -21,9 +22,12 @@ int main()
 {
     printf("Start! Initializing...");
     Destination destination;
+    FrontsensorValue frontsensor;
     SensorValue sensor;
     LineTrace command_lib;
     TireSpeedvalueGPIO motor;
+    // TODO kmizu motadora pin HIGH
+    // TODO find pin (1)
     printf("OK\n");
 
     pinMode(LIMIT_SWITCH, INPUT);
@@ -52,6 +56,15 @@ int main()
             command_lib.set_sensor_value(&val);
             int command = command_lib.get_tire_speed_value();
 
+            // front sensor
+            if (frontsensor.get_sensor_value()) {
+                command_lib.set_sensor_value(&stop_val);
+                command = command_lib.get_tire_speed_value();
+                motor.write_speed(command);
+                printf("\n[!!]OBJECT FOUND (FRONT)\n");
+                usleep(600000);
+                continue;
+            }
 
             /*if (val != 0x3F) {      // 0x3F = 0b111111
                 onlineflag = false;
@@ -72,7 +85,7 @@ int main()
                 command_lib.set_sensor_value(&stop_val);
                 command = command_lib.get_tire_speed_value();
                 motor.write_speed(command);
-                printf("\n[!!]STOP DIRECTION\n");
+                printf("\n[II]STOP DIRECTION\n");
                 if (kokodayoflag == false) {
                     talk_usatan(-2);
                     kokodayoflag = true;
@@ -98,7 +111,7 @@ int main()
                 command = command_lib.get_tire_speed_value();
                 motor.write_speed(command);
 
-                printf("[!!]STOP HOME\n");
+                printf("[II]STOP HOME\n");
                 break;
             }
             else if (val != 0x3F) {

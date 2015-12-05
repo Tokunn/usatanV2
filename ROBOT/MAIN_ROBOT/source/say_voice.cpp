@@ -8,3 +8,5 @@ void talk_usatan(int p_vn) {
     sprintf(cmd, VOICE_CMD, p_vn);
     system(cmd);
 }
+
+// TODO find pin (4)

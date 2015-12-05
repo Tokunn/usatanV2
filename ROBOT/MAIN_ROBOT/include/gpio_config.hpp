@@ -24,4 +24,8 @@
 // Limit Switch
 #define LIMIT_SWITCH         66     // P8_07
 
+
+// Front Sensor
+#define FRONTSENSOR_PINNUM  6
+
 #endif // HEAD_GPIO_CONFIG
