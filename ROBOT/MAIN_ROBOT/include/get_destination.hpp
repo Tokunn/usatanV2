@@ -1,6 +1,9 @@
 #ifndef HEAD_GET_DESTINATION
 #define HEAD_GET_DESTINATION
 
+// Standard
+#include <iostream>
+#include <stdio.h>
 
 // Serial
 #include <sys/types.h>

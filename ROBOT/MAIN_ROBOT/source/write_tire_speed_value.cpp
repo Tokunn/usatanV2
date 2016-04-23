@@ -1,5 +1,7 @@
 #include "../include/write_tire_speed_value.hpp"
 
+//#define DUTY_TIME 1000000
+//#define DUTY_TIME 0
 #define DUTY_TIME 750000
 
 

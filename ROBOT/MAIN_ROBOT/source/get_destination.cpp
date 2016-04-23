@@ -46,13 +46,16 @@ int Destination::get_all_count() {
 void Destination::recive_serial(std::string* string_destination) {
     char char_destination[10];
     read(fd, char_destination, 7);
+    //std::cout << "[DEBUG] get_destination: recive_serial() read\n";
     *string_destination = char_destination;
+    printf("[DEBUG] get_des:recv_seril() : %s\n", char_destination);
 }
 
 /*----- comv_destination_string2int() -----*/
 int Destination::comv_destination_string2int(
         const std::string* pose_string, const std::string* string_destination) {
     //std::cout << ">'" << *string_destination << "'<" << '\n';     // #=# DEBUG #=#
+    //std::cout << ">'" << string_destination[0][3] << "'<\n";
     int return_position = 0;
     unsigned int size = sizeof(pose_position) / sizeof(int);
     for (unsigned int i = 0; i < size; i++) {

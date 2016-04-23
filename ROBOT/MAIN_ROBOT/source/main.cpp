@@ -44,7 +44,7 @@ int main()
         int on_val = 0x3F;
 
         printf("Stop Line: %d\n", stopline);
-        talk_usatan(-1);
+        talk_usatan(-3);
         usleep(10000000);
         talk_usatan(-1);
 
@@ -57,11 +57,12 @@ int main()
             int command = command_lib.get_tire_speed_value();
 
             // front sensor
-            if (frontsensor.get_sensor_value()) {
+            int frontsensorvalue = frontsensor.get_sensor_value();
+            if (frontsensorvalue) {
                 command_lib.set_sensor_value(&stop_val);
                 command = command_lib.get_tire_speed_value();
                 motor.write_speed(command);
-                printf("\n[!!]OBJECT FOUND (FRONT)\n");
+                printf("\n[!!]OBJECT FOUND (FRONT)\tvalue: %d\n", frontsensorvalue);
                 usleep(600000);
                 continue;
             }
@@ -98,7 +99,7 @@ int main()
                 } while (value == HIGH);
                 printf("End\n");
                 onlineflag = true;
-                talk_usatan(-3);
+                //talk_usatan(-2);
                 usleep(1000000);
                 // RUN
                 command_lib.set_sensor_value(&on_val);
@@ -112,6 +113,7 @@ int main()
                 motor.write_speed(command);
 
                 printf("[II]STOP HOME\n");
+                talk_usatan(-2);
                 break;
             }
             else if (val != 0x3F) {
